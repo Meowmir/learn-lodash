@@ -55,8 +55,8 @@ describe('countBy', () => {
       lodashStable.range(Math.floor(LARGE_ARRAY_SIZE / 1.5), LARGE_ARRAY_SIZE)
     )
 
-    const actual = _(array).countBy().map(square).filter(isEven).take().value()
+    const actual = lodashStable(array).countBy().map(square).filter(isEven).take().value()
 
-    assert.deepEqual(actual, _.take(_.filter(_.map(countBy(array), square), isEven)))
+    assert.deepEqual(actual, lodashStable.take(lodashStable.filter(lodashStable.map(countBy(array), square), isEven)))
   })
 })

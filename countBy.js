@@ -1,5 +1,9 @@
 export default function countBy(ogArray, identity) {
   const identityToUse = identity ? identity : (value) => value
+  console.log(identityToUse)
+  const idCheck = identityToUse ? 'hasOwnProperty' : 'constructor'
+  console.log(idCheck)
+
 
   const identityArray = ogArray.map((item) => {
     if (typeof identityToUse === 'function') {
@@ -12,14 +16,6 @@ export default function countBy(ogArray, identity) {
     const existing = accumulator[nextItem] || 0
     return {...accumulator, [nextItem]:existing+1}
   }, {})
-
-  /*
-  {...{}, "4":0+1}
-  {...{"4":1}, "6":0+1}
-  returned last time of callback: {...{"4":1, "6":1}, "6":1+1}
-  result of reduce: {"4":1, "6":2}
-   */
-
 
   return keyObj
 }
