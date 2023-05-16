@@ -1,14 +1,14 @@
 export default function countBy(ogArray, identity) {
-  const indentityToUse = identity ? identity : (value) => value
+  const identityToUse = identity ? identity : (value) => value
 
-  const flooredArray = ogArray.map((item) => {
-    if (typeof indentityToUse === 'function') {
-      return indentityToUse(item)
+  const identityArray = ogArray.map((item) => {
+    if (typeof identityToUse === 'function') {
+      return identityToUse(item)
     }
-    return item[indentityToUse]
+    return item[identityToUse]
   })
 
-  const keyObj = flooredArray.reduce((accumulator, nextItem) => {
+  const keyObj = identityArray.reduce((accumulator, nextItem) => {
     const existing = accumulator[nextItem] || 0
     return {...accumulator, [nextItem]:existing+1}
   }, {})
