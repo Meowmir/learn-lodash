@@ -17,6 +17,10 @@ export default function isEqual(a, b) {
     return true
   }
 
+  if (Array.isArray(aToUse) && Array.isArray(bToUse)) {
+    return JSON.stringify(aToUse) === JSON.stringify(bToUse)
+  }
+
   return false
 }
 
