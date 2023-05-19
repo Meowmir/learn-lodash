@@ -21,6 +21,10 @@ export default function isEqual(a, b) {
     return JSON.stringify(aToUse) === JSON.stringify(bToUse)
   }
 
+  if (typeof aToUse === 'object' && typeof bToUse === 'object') {
+    return JSON.stringify(aToUse) === JSON.stringify(bToUse)
+  }
+
   return false
 }
 
