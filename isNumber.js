@@ -5,21 +5,13 @@
 
 export default function isNumber(checkIfNum) {
 
-  if (typeof checkIfNum === typeof NaN) {
-    return true
-  }
-
-  if (!Number.isNaN(checkIfNum)) {
-    return true
-  }
-
-  if (Number.isNaN(checkIfNum)) {
+  if (checkIfNum instanceof Date) {
     return false
   }
 
-  if (typeof checkIfNum !== typeof NaN) {
-    return false
+  if (typeof checkIfNum === 'object' && checkIfNum) {
+    return typeof checkIfNum.valueOf() === 'number'
   }
 
-  return
+  return typeof checkIfNum === 'number'
 }
